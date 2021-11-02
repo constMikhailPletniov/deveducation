@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>RANDOMIZER</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>Let's Play</h2>
+        </header>
+        <section class="container">
+            <h1>RANDOMIZER</h1>
+            <form id="randomizer" name="randomizer">
+                <label for="range-min">Min</label>
+                <input type="range" name="range-min" id="range-min" min="1" max="9" step="1" value="1" />
+                <p class="out-range-min">1</p>
+                <label for="range-max">Max</label>
+                <input type="range" name="range-max" id="range-max" min="2" max="10" step="1" value="2" />
+                <p class="out-range-max">2</p>
+                <input type="submit" id="input-generate" value="start"
+                    title="Do You want to get random values? Click here" />
+            </form>
+            <button id="btn-generate">Generate</button>
+
+            <div class="footer-randomizer">
+                <p class="out-generate"></p>
+
+            </div>
+            <button class="btn-reset" title="If You want reload randomizer click here">Reset</button>
+
+        </section>
+        <footer>
+            <p>Made by Mikhail</p>
+        </footer>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+
+</html>

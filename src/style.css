@@ -1,0 +1,127 @@
+
+html, body{
+    background-color: rgb(109, 117, 230);
+   margin: 0;
+    height: 100%;
+}
+h1, label{
+    color: rgb(255,255,255);
+}
+
+.wrapper{
+    display: flex;
+    min-height: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header, footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(204, 82, 198);
+    color:rgb(255,255,255);
+    flex: 0 0 auto;
+    min-width: 100vw;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.container{
+    box-sizing: border-box;
+    background-color: rgb(204, 82, 198);
+    padding: 1%;
+    display: flex;
+    flex: 1 1 auto;
+    margin: 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 2%;
+    min-width: 50vw;
+    height: 50vh;
+}
+
+#randomizer{
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: rgb(223, 64, 143);
+    padding: 5%;
+    border-radius: 10%;
+    border: 0.2em solid rgb(214, 30, 30);
+}
+#range-min, #range-max {
+    cursor: pointer;
+border: 1px solid rgb(214, 30, 30);
+border-radius: 50%;
+}
+.out-range-min, .out-range-max, .out-generate{
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:rgb(255,255,255);
+    padding: 1%;
+margin: 0 auto;
+}
+
+#btn-generate{
+    cursor: pointer;
+    display: none;
+    margin: 1%;
+    border-radius: 10%;
+    padding: 2%;
+}
+.footer-randomizer{
+    box-sizing: border-box;
+    min-width: 50vw;
+}
+ #input-generate{
+    cursor: pointer;
+    display: block;
+    margin: 1%;
+    padding: 10%;
+     align-self: center;
+     border: 1px solid rgb(22, 19, 158);
+     border-radius: 40%;
+     background-color: rgb(65, 105, 225);
+     color:rgb(255, 255, 255);
+     font-size: large;
+ }
+ #input-generate:hover{
+    background-color: rgb(212, 65, 225);
+ }
+ #btn-generate{
+    background-color: rgb(65, 105, 225);
+    color:rgb(255, 255, 255);
+    font-size: large;
+ }
+ #btn-generate:hover{
+    background-color: rgb(212, 65, 225);
+ }
+ #btn-generate:disabled{
+    background-color: rgb(53, 18, 51);
+ }
+
+ .out-generate{
+     text-align: center;
+    font-family: "Times New Roman", "Courier New", sans-serif;
+     font-size: larger;
+ }
+
+.btn-reset{
+    cursor: pointer;
+    margin-top: 1%;
+    border: 3px solid rgb(39, 50, 148);
+    border-radius: 40%;
+    padding: 1%;
+    background-color: rgb(22, 19, 158);
+    color:rgb(200,255,255);
+    font-size: large;
+}
+.btn-reset:hover{
+    background-color: rgb(236, 16, 236);
+}
