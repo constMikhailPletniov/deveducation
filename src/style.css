@@ -1,0 +1,57 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+}
+table{
+    color:rgb(255,255,255);
+    width: 20%;
+}
+
+.thead, tbody, thead, table{
+background-color: rgb(0, 255, 157);
+}
+.thead{
+    color:rgb(255,255,255);
+    border-radius: 1%;
+    text-align: center;
+    width: 20.25%;
+    font-size: 300%;
+}
+
+input{
+    position: absolute;
+    visibility: hidden;
+    background-color: aqua;
+    left: 100%;
+}
+label{
+    background-color: rgb(255, 255, 255);
+    color:rgb(0,0,0);
+    display:inline-block;
+    width: 100%;
+    text-align: center;
+}
+label:hover, #i2 + label:hover,#i3 + label:hover,#i9 + label:hover,#i10 + label:hover,#i16 + label:hover,#i17 + label:hover,#i23 + label:hover,#i24 + label:hover,#i30 + label:hover,#i31 + label:hover{
+
+    background-color: blueviolet;
+}
+ td{
+     box-sizing: border-box;
+     width: 100%;
+    background-color: rgb(158, 156, 147);
+    color:rgb(80, 79, 79);
+}
+
+input:checked + label, #i2:checked + label,#i3:checked + label,#i9:checked + label,#i10:checked + label,#i16:checked + label,#i17:checked + label,#i23:checked + label,#i24:checked + label,#i30:checked + label,#i31:checked + label {
+    color: rgb(255,255,255);
+    background-color: rgb(165, 42, 42);
+}
+
+  #i2 + label,#i3 + label,#i9 + label,#i10 + label,#i16 + label,#i17 + label,#i23 + label,#i24 + label,#i30 + label,#i31 + label{
+      background-color: rgb(12, 92, 12);
+    color:rgb(255, 255, 255);
+}
