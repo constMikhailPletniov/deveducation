@@ -75,63 +75,65 @@ console.log('task3: ', getNameOfNumber(1));
 
 function getNumberFromString(number) {
 
-   const numberObject = {
-       'one': 1,
-       'two': 2,
-       'three': 3,
-       'four': 4,
-       'five': 5,
-       'six': 6,
-'seven': 7,
-'eight': 8,
-'nine': 9,
-'ten': 10,
-'eleven': 11,
-'twelve': 12,
-'thirteen': 13,
-'fourteen': 14,
-'fifteen': 15,
-'sixteen': 16,
-'seventeen': 17,
-'eighteen': 18,
-'nineteen': 19,
-'twenty': 20,
-'thirty': 30,
-'forty':40,
-'fifty':50,
-'sixty':60,
-'seventy':70,
-'eighty':80,
-'ninety':90
-   }
-
-   if( number !== 'string') return;
-   const array = [];
-   const numWords = number.split(' ').map(i => i.trim());
-
-   numWords.map( (i, index) => {
-     
-    if(i === 'hundred'){
-       array[index - 1] = array[index - 1] * 100;
-       
+    if (typeof number !== 'string') return;
+    const numberObject = {
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9,
+        'ten': 10,
+        'eleven': 11,
+        'twelve': 12,
+        'thirteen': 13,
+        'fourteen': 14,
+        'fifteen': 15,
+        'sixteen': 16,
+        'seventeen': 17,
+        'eighteen': 18,
+        'nineteen': 19,
+        'twenty': 20,
+        'thirty': 30,
+        'forty': 40,
+        'fifty': 50,
+        'sixty': 60,
+        'seventy': 70,
+        'eighty': 80,
+        'ninety': 90
     }
-    if(numberObject.hasOwnProperty(i)){
-        array.push(numberObject[i]);
-    }
-    console.log(array[index]);
-    return array;
-});
-  console.log(array);
-   const result = array.reduce((acc, curr) => acc+= curr);
-return result;
+
+
+    const array = [];
+    const numWords = number.split(' ').map(i => i.trim());
+
+    numWords.map((i, index) => {
+
+        if (i === 'hundred') {
+            array[index - 1] = array[index - 1] * 100;
+
+        }
+        if (numberObject.hasOwnProperty(i)) {
+            array.push(numberObject[i]);
+        }
+        return array;
+    });
+
+    const result = array.reduce((acc, curr, index) => {
+        return acc += curr;
+    }, 0);
+    return result;
 }
-console.log('task4:', getNumberFromString('two'));
+console.log('task4:', getNumberFromString('two hundred  ninety one'));
 
 
 function getNameOfNumberToTrillion(number) {
 
     const arrCountUnits = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-    const arrCountTens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    const arrCountTens = ['twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
     const arrCountTeens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
 

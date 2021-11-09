@@ -75,7 +75,7 @@ describe('Enter the uppercase and get a number', () => {
         expect(getNumberFromString(100)).to.be.equal(undefined);
     });
     it('should be argument type a string and  emplty', () => {
-        expect(getNumberFromString('')).to.be.equal(undefined);
+        expect(getNumberFromString('')).to.be.equal(0);
     });
     it('should be number before ten', () => {
         expect(getNumberFromString('four')).to.be.equal(4);
@@ -85,5 +85,37 @@ describe('Enter the uppercase and get a number', () => {
     });
     it('should be number before hundred', () => {
         expect(getNumberFromString('fifty nine')).to.be.equal(59);
+    });
+    it('should be number after hundred and before nine hundred ninety nine', () => {
+        expect(getNumberFromString('two hundred fifty eight')).to.be.equal(258);
+        expect(getNumberFromString('seven hundred seventy seven')).to.be.equal(777);
+    });
+
+    describe('Enter a number from 1 to 1000000000000 and get string with name of number', () => {
+        it('should be argument type a number', () => {
+            expect(getNameOfNumberToTrillion('3')).to.be.equal(undefined);
+        });
+        it('should be  argument number more than zero', () => {
+            expect(getNameOfNumberToTrillion(1)).to.be.equal('one');
+        });
+        it('should be number more or equal 1000000000 and number less than 1000000000000', () => {
+            expect(getNameOfNumberToTrillion(1000000000)).to.be.equal('one billion(s) ');
+            expect(getNameOfNumberToTrillion(777888999501)).to.be.equal('seven hundred seventy seven billion(s) eight hundred eighty eight million(s) nine hundred ninety nine thousand(s) five hundred one');
+        });
+        it('should be number more or equal 1000000 and number less than 1000000000', () => {
+            expect(getNameOfNumberToTrillion(1987505)).to.be.equal('one million(s) nine hundred eighty seven thousand(s) five hundred five');
+        });
+        it('should be number more or equal 100 and number less than 1000', () => {
+            expect(getNameOfNumberToTrillion(818)).to.be.equal('eight hundred eighteen');
+        });
+        it('should be number less than 10', () => {
+            expect(getNameOfNumberToTrillion(4)).to.be.equal('four');
+        });
+        it('should be number less than 20 and more than 10', () => {
+            expect(getNameOfNumberToTrillion(11)).to.be.equal('eleven');
+        });
+        it('should be number less than 100 more than 20', () => {
+            expect(getNameOfNumberToTrillion(45)).to.be.equal('fourty five');
+        });
     });
 });
