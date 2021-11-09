@@ -8,18 +8,18 @@ function getCookingTime(eggsAmount) {
 
     let result = 0;
 
-    if (typeof eggsAmount === 'number' && isNaN(eggsAmount) === false) {
+    if (!eggsAmount) return;
 
-        if (eggsAmount > 0) {
-            return result = Math.ceil(eggsAmount / 5);
-        }
-        return result;
+    if (eggsAmount > 0) {
+        return result = Math.ceil(eggsAmount / 5);
     }
+    return result;
 
-    return;
+
+
 }
 console.log('task1: ', getCookingTime(11));
-document.querySelector('.out-task1').textContent = `Task 1: You can cooking eggs for: ${getCookingTime(11)} times`;
+//document.querySelector('.out-task1').textContent = `Task 1: You can cooking eggs for: ${getCookingTime(11)} times`;
 
 /*2.Получая массив чисел. Все они либо нечетные, либо четные, кроме
 одного. Тебе нужно его найти*/
@@ -54,7 +54,7 @@ function getNumber(array) {
     return;
 }
 console.log('task2: ', getNumber([1, 5, 7, 9, 15, 19, 777, -15, -11, 4, 9, 23, -17]));
-document.querySelector('.out-task2').textContent = `Task 2: ${getNumber([1, 5, 7, 9, 15, 19, 777, -15, -11, 4, 9, 23, -17])}`;
+//document.querySelector('.out-task2').textContent = `Task 2: ${getNumber([1, 5, 7, 9, 15, 19, 777, -15, -11, 4, 9, 23, -17])}`;
 //getNumber([0, 2, 8, -4, 0, -122, 13, -4, 28, 12])
 
 /*3. Принимая массив объектов и случайную строку. У объектов может
@@ -82,7 +82,8 @@ function findTitle(array, string) {
                 if (arr.includes(string)) {
                     console.log('task3: ', { title: i.title });
                     out += JSON.stringify({ title: i.title });
-                    return document.querySelector('.out-task3').textContent = `Task 3: ${out}`;
+                    return out;
+                    //                    return document.querySelector('.out-task3').textContent = `Task 3: ${out}`;
                 }
                 return;
             }
@@ -149,7 +150,7 @@ function getNextPalindrome(num) {
     }
     return;
 }
-document.querySelector('.out-task5').textContent = `Task 5: ${getNextPalindrome(7)}`;
+//document.querySelector('.out-task5').textContent = `Task 5: ${getNextPalindrome(7)}`;
 
 /*6. Создать структуру данных Set, используя объект, создать методы add,
 remove, has*/
@@ -179,15 +180,8 @@ const emulatedSet = {
 
 }
 
-let mySet = new Set();
-// mySet.add([1, 1, 1], 1)
-// mySet.add([22, 22]);
-mySet.add(1);
-mySet.has(1);
-mySet.delete(1);
-console.log(mySet)
-document.querySelector('.out-task6').innerHTML = `Task 6: ${emulatedSet.add(1)}`;
+//document.querySelector('.out-task6').innerHTML = `Task 6: ${emulatedSet.add(1)}`;
 
 console.log(emulatedSet.add(1))
 // console.log(emulatedSet.has(1))
-console.log(emulatedSet.remove(1))
+//console.log(emulatedSet.remove(1))
