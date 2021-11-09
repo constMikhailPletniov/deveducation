@@ -37,6 +37,8 @@ function getSumPositiv(numberOne, numberTwo, numberThree) {
     if (typeof numberOne === 'number', typeof numberTwo === 'number', typeof numberThree === 'number') {
 
         switch (true) {
+            case (numberOne < 0 && numberTwo < 0 && numberThree < 0):
+            return 0;
             case numberOne < 0:
                 return numberTwo + numberThree;
             case numberTwo < 0:

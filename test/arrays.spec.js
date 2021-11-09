@@ -1,15 +1,15 @@
-// describe('create random values for variables', () => {
+describe('create random values for variables', () => {
 
-//     let fakeArray;
-//     beforeEach(() => {
-//         fakeArray = faker.datatype.array();
-//     });
-// });
+  
+    beforeEach(() => {
+        
+    });
+
 
 describe('Find minimal elements of the array', () => {
 
     it('should be answer the number', () => {
-        expect(getMinElement([1, 2, 3])).to.be.a('number');
+        expect(getMinElement([1,2,3])).to.be.a('number');
     });
 
     it('should be minimal values from the array', () => {
@@ -92,4 +92,6 @@ describe('Sort the array Bubbles method', () => {
     it('should be sort the array bubbles method', () => {
         expect(sortArray([3, 2, 1, 4])).to.be.eql([1, 2, 3, 4]);
     });
+});
+
 });

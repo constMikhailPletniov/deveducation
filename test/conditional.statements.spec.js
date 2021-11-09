@@ -45,6 +45,9 @@ describe('Find sum only positive values', () => {
     it('default all positive', () => {
         expect(getSumPositiv(2, 7, 1)).to.be.equal(10);
     });
+    it('all numbers are negative', () => {
+        expect(getSumPositiv(-1,-1,-1)).to.be.equal(0);
+    });
 });
 
 describe('Count maximum expresion (max(а*b*с, а+b+с))+3', () => {

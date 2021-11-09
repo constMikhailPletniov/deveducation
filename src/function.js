@@ -75,73 +75,58 @@ console.log('task3: ', getNameOfNumber(1));
 
 function getNumberFromString(number) {
 
-    const arrCountUnits = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-    const arrCountTens = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-    const arrCountTeens = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-    const arrNumberOnes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const arrNumberTeens = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
-    const arrNumberTens = [20, 30, 40, 50, 60, 70, 80, 90];
+   const numberObject = {
+       'one': 1,
+       'two': 2,
+       'three': 3,
+       'four': 4,
+       'five': 5,
+       'six': 6,
+'seven': 7,
+'eight': 8,
+'nine': 9,
+'ten': 10,
+'eleven': 11,
+'twelve': 12,
+'thirteen': 13,
+'fourteen': 14,
+'fifteen': 15,
+'sixteen': 16,
+'seventeen': 17,
+'eighteen': 18,
+'nineteen': 19,
+'twenty': 20,
+'thirty': 30,
+'forty':40,
+'fifty':50,
+'sixty':60,
+'seventy':70,
+'eighty':80,
+'ninety':90
+   }
 
-    if (typeof number === 'string') {
+   if( !number === 'string') return;
+   const array = [];
+   const numWords = number.split(' ').map(i => i.trim());
 
-        number = number.trim().split(' ');
-        console.log(number);
-        if (number.length > 1) {
-            for (let k = 0; k < number.length; k++) {
-                console.log('before hundred 2lenth: ', number[k]);
-                if (number[k] === 'hundred' && number.length === 2) {
-                    console.log('lenth2: ', number[k]);
-                    return Number(getNumberBeforeHundred(number[k - 1]) + '00');
-                } else if (number[k] === 'hundred' && number.length === 3) {
-                    console.log('number[k] length 3: ', number[k]);
-                    return getNumberBeforeHundred(number[k - 1]) + '0' + getNumberBeforeHundred(number[k + 1]);
-                }
-                console.log('before hundred 2lenth: ', number[k]);
-                return getNumberBeforeHundred(number[k]);
-
-            }
-        }
-        return getNumberBeforeHundred(number[0]);
-
-
-        function getNumberBeforeHundred(number) {
-            console.log(number);
-            if (number !== '') {
-
-                for (let i = 0; i < arrCountUnits.length; i++) {
-
-                    if (number === arrCountUnits[i]) {
-
-                        for (let j = 0; j < arrNumberOnes.length; j++) {
-                            if (i === j) return arrNumberOnes[j];
-                        }
-                    }
-                }
-                for (let i = 0; i < arrCountTeens.length; i++) {
-
-                    if (number === arrCountTeens[i]) {
-                        for (let j = 0; j < arrNumberTeens.length; j++) {
-                            if (i === j) return arrNumberTeens[j];
-                        }
-                    }
-                }
-                for (let i = 0; i < arrCountTens.length; i++) {
-
-                    if (number === arrCountTens[i]) {
-                        for (let j = 0; j < arrNumberTens.length; j++) {
-                            if (i === j) return arrNumberTens[j];
-                        }
-                    }
-                }
-                getNumberFromString(number);
-            }
-            return;
-        }
-
+   for(let i = 0; i < numWords.length; i++){
+    if(numWords[i]=== 'hundred'){
+        array[i - 1] * 100;
+        continue;
     }
-    return;
+    if(numberObject.hasOwnProperty(numWords[i])){
+        array.push(numberObject[numWords[i]]);
+    };
+    return array;
 }
-console.log('task4:', getNumberFromString('fifty one'));
+console.log(array);
+  
+   return array.reduce((acc, curr) => {
+return acc += curr;
+   },0);
+
+}
+console.log('task4:', getNumberFromString('one hundred one'));
 
 
 function getNameOfNumberToTrillion(number) {
