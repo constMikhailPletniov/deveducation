@@ -31,7 +31,7 @@ function getDistance(x, y, x2, y2) {
 
     if (typeof x === 'number' && typeof y === 'number' && typeof y2 === 'number' && typeof x2 === 'number') {
 
-        const result = ((x2 - x) ** 2 + (y2 - y) ** 2) ** 0.5;
+        const result = Number((((x2 - x) ** 2 + (y2 - y) ** 2) ** 0.5).toFixed(2));
 
         return result;
     }
@@ -85,51 +85,63 @@ function getNumberFromString(number) {
     if (typeof number === 'string') {
 
         number = number.trim().split(' ');
+        console.log(number);
+        if (number.length > 1) {
+            for (let k = 0; k < number.length; k++) {
+                console.log('before hundred 2lenth: ', number[k]);
+                if (number[k] === 'hundred' && number.length === 2) {
+                    console.log('lenth2: ', number[k]);
+                    return Number(getNumberBeforeHundred(number[k - 1]) + '00');
+                } else if (number[k] === 'hundred' && number.length === 3) {
+                    console.log('number[k] length 3: ', number[k]);
+                    return getNumberBeforeHundred(number[k - 1]) + '0' + getNumberBeforeHundred(number[k + 1]);
+                }
+                console.log('before hundred 2lenth: ', number[k]);
+                return getNumberBeforeHundred(number[k]);
 
-        for (let k = 0; k < number.length; k++) {
-            console.log(number);
-            if (number[k] === 'hundred' && number.length === 2) {
-                return Number(getNumberBeforeHundred(number[k - 1]) + '00');
-            } else if (number[k] === 'hundred' && number.length === 3) {
-                return getNumberBeforeHundred(number[k - 1]) + '0' + getNumberBeforeHundred(number[k + 1]);
             }
-            return getNumberBeforeHundred(number[k]);
-
         }
+        return getNumberBeforeHundred(number[0]);
+
 
         function getNumberBeforeHundred(number) {
+            console.log(number);
+            if (number !== '') {
 
-            for (let i = 0; i < arrCountUnits.length; i++) {
+                for (let i = 0; i < arrCountUnits.length; i++) {
 
-                if (number === arrCountUnits[i]) {
+                    if (number === arrCountUnits[i]) {
 
-                    for (let j = 0; j < arrNumberOnes.length; j++) {
-                        if (i === j) return arrNumberOnes[j];
+                        for (let j = 0; j < arrNumberOnes.length; j++) {
+                            if (i === j) return arrNumberOnes[j];
+                        }
                     }
                 }
-            }
-            for (let i = 0; i < arrCountTeens.length; i++) {
+                for (let i = 0; i < arrCountTeens.length; i++) {
 
-                if (number === arrCountTeens[i]) {
-                    for (let j = 0; j < arrNumberTeens.length; j++) {
-                        if (i === j) return arrNumberTeens[j];
+                    if (number === arrCountTeens[i]) {
+                        for (let j = 0; j < arrNumberTeens.length; j++) {
+                            if (i === j) return arrNumberTeens[j];
+                        }
                     }
                 }
-            }
-            for (let i = 0; i < arrCountTens.length; i++) {
+                for (let i = 0; i < arrCountTens.length; i++) {
 
-                if (number === arrCountTens[i]) {
-                    for (let j = 0; j < arrNumberTens.length; j++) {
-                        if (i === j) return arrNumberTens[j];
+                    if (number === arrCountTens[i]) {
+                        for (let j = 0; j < arrNumberTens.length; j++) {
+                            if (i === j) return arrNumberTens[j];
+                        }
                     }
                 }
+                getNumberFromString(number);
             }
+            return;
         }
 
     }
     return;
 }
-console.log('task4:', getNumberFromString('ninety'));
+console.log('task4:', getNumberFromString('fifty one'));
 
 
 function getNameOfNumberToTrillion(number) {

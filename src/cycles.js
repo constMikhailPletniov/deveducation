@@ -1,18 +1,19 @@
 //1. Найти сумму четных чисел и их количество в диапазоне от 1 до 99 
 function getSumEvenAndOddNumbers() {
     let evenCount = 0;
-    let oddCount = 0;
+    let count = 0;
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 1; i < 100; i++) {
 
         if (i % 2 === 0) {
             evenCount += i;
-        } else {
-            oddCount += i;
+            count++;
         }
-
     }
-    return `Summ even:${evenCount}, summ Odd: ${oddCount}`;
+    return {
+        evenCount,
+        count
+    };
 }
 console.log('task1:', getSumEvenAndOddNumbers());
 
@@ -72,7 +73,7 @@ console.log('task4: ', calcFactorial(5));
 function calcSumOfNumber(number) {
     let count = 0;
 
-    if (typeof number === "number") {
+    if (typeof number === "number" && number > 0) {
 
         for (let i = 0; i <= number; i++) {
             count += i;
@@ -80,22 +81,29 @@ function calcSumOfNumber(number) {
 
         return count;
     }
+    if (typeof number === "number" && number < 0) {
+        for (let i = 0; i >= number; i--) {
+            count += i;
+        }
+
+        return count;
+    }
     return;
 }
-console.log('task5:', calcSumOfNumber(10));
+console.log('task5:', calcSumOfNumber(-10));
 
 //6.Вывести число, которое является зеркальным отображением последовательности цифр заданного числа, например, задано число 123, вывести 321.
 
 function showMirrorNumbers(number) {
 
     if (typeof number === 'number') {
-        let mirrorNumber = number.toString().split('').reverse().join('');
-        mirrorNumber = +mirrorNumber;
+        const mirrorNumber = parseFloat(number.toString().split('').reverse().join('')) * Math.sign(number);
+
         return mirrorNumber;
     }
     return;
 }
-console.log('task6:', showMirrorNumbers(123));
+console.log('task6:', showMirrorNumbers(-123));
 
 
 

@@ -31,7 +31,7 @@ function getIndexOfMinElement(array) {
     }
     return;
 }
-console.log('task3:', getIndexOfMinElement([3, 2, 3]));
+console.log('task3:', getIndexOfMinElement([1, 2, 1]));
 
 //4.Найти индекс максимального элемента массива
 
@@ -81,22 +81,22 @@ console.log('task6:', getReverseArray([1, 2, 3]));
 
 function getNumberOfOddElemets(array) {
 
-    let sum = 0;
 
+    let count = 0;
     if (Array.isArray(array)) {
 
         for (let i = 0; i < array.length; i++) {
 
             if (i % 2 !== 0) {
-                sum += i;
+                count++;
             }
 
         }
-        return sum;
+        return count;
     }
     return;
 }
-console.log('task7:', getNumberOfOddElemets([1, 2, 3]));
+console.log('task7:', getNumberOfOddElemets([1, 2, 3, 4]));
 
 /*8.Поменять местами первую и вторую половину массива, например, для массива 
 1 2 3 4, результат 3 4 1 2*/
