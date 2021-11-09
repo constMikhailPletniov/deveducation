@@ -105,28 +105,27 @@ function getNumberFromString(number) {
 'ninety':90
    }
 
-   if( !number === 'string') return;
+   if( number !== 'string') return;
    const array = [];
    const numWords = number.split(' ').map(i => i.trim());
 
-   for(let i = 0; i < numWords.length; i++){
-    if(numWords[i]=== 'hundred'){
-        array[i - 1] * 100;
-        continue;
+   numWords.map( (i, index) => {
+     
+    if(i === 'hundred'){
+       array[index - 1] = array[index - 1] * 100;
+       
     }
-    if(numberObject.hasOwnProperty(numWords[i])){
-        array.push(numberObject[numWords[i]]);
-    };
+    if(numberObject.hasOwnProperty(i)){
+        array.push(numberObject[i]);
+    }
+    console.log(array[index]);
     return array;
+});
+  console.log(array);
+   const result = array.reduce((acc, curr) => acc+= curr);
+return result;
 }
-console.log(array);
-  
-   return array.reduce((acc, curr) => {
-return acc += curr;
-   },0);
-
-}
-console.log('task4:', getNumberFromString('one hundred one'));
+console.log('task4:', getNumberFromString('two'));
 
 
 function getNameOfNumberToTrillion(number) {
