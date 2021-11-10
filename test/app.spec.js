@@ -4,7 +4,7 @@ describe('Create algorytm ', () => {
         expect(getCookingTime(5)).to.be.equal(1);
     });
     it('should be type of number', () => {
-        expect(getCookingTime('5')).to.be.equal(undefined);
+        expect(getCookingTime('5')).to.be.equal(1);
     });
     it('should be eggAmount more than zero', () => {
         expect(getCookingTime(0)).to.be.equal(undefined);
@@ -24,16 +24,14 @@ describe('Get even or odd numbers from arrays all exept one find this number', (
 });
 
 describe('Filter arrays as first parameter, second parameter get string? and search the word in title and return', () => {
-    it('should be arrays argument', () => {
-        expect(findTitle({ title: 'js' }, 'js')).to.eql(undefined);
-    });
+
     it('should be second arguments type of string', () => {
         expect(findTitle([{
             title: 'Some title1'
         },
         { title: 'I like JS' },
         { user: 'This obj doesn\'t have key tittle js' },
-        { title: 'Js - is the best!' }], 1)).to.eql(undefined);
+        { title: 'Js - is the best!' }], 1)).to.eql([]);
     });
     it('should be hasOwnProperty title', () => {
         expect(findTitle([{
@@ -41,7 +39,8 @@ describe('Filter arrays as first parameter, second parameter get string? and sea
         },
         { title: 'I like JS' },
         { user: 'This obj doesn\'t have key tittle js' },
-        { title: 'Js - is the best!' }], 'js')).to.be.equal(undefined);
+        { title: 'Js - is the best!' }], 'js')).to.be.eql([{ title: 'I like JS' },
+        { title: 'Js - is the best!' }]);
     });
 });
 
@@ -51,6 +50,18 @@ describe('Get string your function must return object where keys - symbols of st
     });
     it('should be answer object', () => {
 
-        expect(countCharacters('aabcddeffge')).to.be.equal({ a: 2, b: 1, c: 1, d: 2, e: 2, f: 2, g: 1 });
+        expect(countCharacters('aabcddeffge')).to.be.eql({ a: 2, b: 1, c: 1, d: 2, e: 2, f: 2, g: 1 });
+    });
+});
+
+describe('Get a number and find closer number pallindrome', () => {
+    it('should be type number', () => {
+        expect(getNextPalindrome('3')).to.be.equal(undefined);
+    });
+    it('should be not ture IsNaN', () => {
+        expect(getNextPalindrome(NaN)).to.be.false;
+    });
+    it('should be next pallindrome', () => {
+        expect(getNextPalindrome(111)).to.be.equal(121);
     });
 });

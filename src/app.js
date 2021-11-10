@@ -19,7 +19,6 @@ function getCookingTime(eggsAmount) {
 
 }
 console.log('task1: ', getCookingTime(11));
-//document.querySelector('.out-task1').textContent = `Task 1: You can cooking eggs for: ${getCookingTime(11)} times`;
 
 /*2.Получая массив чисел. Все они либо нечетные, либо четные, кроме
 одного. Тебе нужно его найти*/
@@ -54,7 +53,7 @@ function getNumber(array) {
     return;
 }
 console.log('task2: ', getNumber([1, 5, 7, 9, 15, 19, 777, -15, -11, 4, 9, 23, -17]));
-//document.querySelector('.out-task2').textContent = `Task 2: ${getNumber([1, 5, 7, 9, 15, 19, 777, -15, -11, 4, 9, 23, -17])}`;
+
 //getNumber([0, 2, 8, -4, 0, -122, 13, -4, 28, 12])
 
 /*3. Принимая массив объектов и случайную строку. У объектов может
@@ -72,27 +71,22 @@ const arr = [{
 
 function findTitle(array, string) {
 
-    if (Array.isArray(array) && typeof string === 'string') {
-        let arr;
-        let out = '';
-        array.forEach(i => {
-            if (i.hasOwnProperty('title')) {
-                arr = i.title.toLowerCase().split(' ');
+    if (!Array.isArray(array) && typeof string !== 'string') return;
+    let arr;
 
-                if (arr.includes(string)) {
-                    console.log('task3: ', { title: i.title });
-                    out += JSON.stringify({ title: i.title });
-                    return out;
-                    //                    return document.querySelector('.out-task3').textContent = `Task 3: ${out}`;
-                }
-                return;
+    return array.reduce((acc, curr) => {
+        if (curr.hasOwnProperty('title')) {
+            arr = curr.title.toLowerCase().split(' ');
+            if (arr.includes(string)) {
+
+                acc.push(curr);
             }
-            return;
-        });
-    }
-    return;
+        }
+        return acc;
+    }, []);
+
 }
-findTitle(arr, 'js');
+console.log('task 3: ', findTitle(arr, 'js'));
 
 
 /*4. Принимая строку, ваша функция должна вернуть обьект, в котором
@@ -114,13 +108,12 @@ function countCharacters(string) {
             return { ...acc, [curr]: count }
 
         }, {});
-        document.querySelector('.out-task4').textContent = `Task 4: ${JSON.stringify(obj)}`;
-        console.log('task4: ', obj);
+        return obj;
     }
     return;
 }
 
-countCharacters('aabcddeffge');
+console.log('task 4: ', countCharacters('aabcddeffge'));
 
 
 /*5. Принимая число, ваша функция должна найти следующий
@@ -145,43 +138,10 @@ function getNextPalindrome(num) {
             numArr = Number(num.toString().split('').join(''));
 
         }
-        console.log('task 5: ', num);
+
         return num;
     }
     return;
 }
-//document.querySelector('.out-task5').textContent = `Task 5: ${getNextPalindrome(7)}`;
+console.log('task 5: ', getNextPalindrome(7));
 
-/*6. Создать структуру данных Set, используя объект, создать методы add,
-remove, has*/
-
-
-const emulatedSet = {
-    add: (...iterable) => {
-
-        return Object.keys(iterable.reduce((acc, curr) => {
-            let count = 1;
-
-            if (acc.hasOwnProperty(curr)) {
-                acc[curr] += count;
-                if (count > 1) return;
-
-            }
-            return { ...acc, [curr]: count }
-
-        }, {})).map(Number);
-    },
-    remove: (num) => {
-        return iterable.find(num => delete num);
-    },
-    has: (number) => {
-        return iterable.find(number => number ? true : false);
-    }
-
-}
-
-//document.querySelector('.out-task6').innerHTML = `Task 6: ${emulatedSet.add(1)}`;
-
-console.log(emulatedSet.add(1))
-// console.log(emulatedSet.has(1))
-//console.log(emulatedSet.remove(1))
