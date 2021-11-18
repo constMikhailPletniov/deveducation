@@ -1,5 +1,5 @@
 
-function paginations() {
+export function paginations() {
     for (const item of LI_TAG) {
         item.classList.remove('active');
     }
@@ -7,7 +7,7 @@ function paginations() {
     return getPieceOfArray(this.textContent);
 }
 
-function getPreviousPage() {
+export function getPreviousPage() {
     let prev;
 
     for (let i = LI_TAG.length - 1; i >= 0; i--) {
@@ -26,7 +26,7 @@ function getPreviousPage() {
 
 }
 
-function getNextPage() {
+export function getNextPage() {
     let current;
     for (let i = 0; i < LI_TAG.length; i++) {
         if (LI_TAG[i].className === 'active') {
@@ -43,7 +43,7 @@ function getNextPage() {
     return getPieceOfArray(current);
 }
 
-function getPieceOfArray(current) {
+export function getPieceOfArray(current) {
 
     let start = (current - 1) * itemsOnPage;
     let end = start + itemsOnPage;
@@ -52,5 +52,3 @@ function getPieceOfArray(current) {
 
     return printImages(numberOfItems);
 }
-
-export default { getPieceOfArray, getNextPage, getPreviousPage, paginations }
