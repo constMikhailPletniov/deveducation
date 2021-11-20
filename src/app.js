@@ -30,7 +30,8 @@ function Node(value, next = null) {
     this.value = value;
     this.next = next;
 }
-
+/*2.Добавить графическое отображение листа в доме дерева JS. Для визуализации
+списка использовать html теги*/
 const link = new LinkedList;
 
 function checkInput() {
