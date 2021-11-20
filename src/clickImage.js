@@ -1,5 +1,5 @@
 
-export function getBigImage() {
+function getBigImage() {
     const div = document.createElement('div');
     const img = document.createElement('img');
     const button = document.createElement('button');
@@ -17,7 +17,7 @@ export function getBigImage() {
     const BUTTON_REMOVE_BIG_IMAGE = document.getElementById('remove-btn');
     BUTTON_REMOVE_BIG_IMAGE.addEventListener('click', removeBigImageBtn);
 }
-export function removeBigImageBtn(e) {
+function removeBigImageBtn(e) {
     return e.target.parentElement.style.display = 'none';
 
 }

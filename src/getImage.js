@@ -1,4 +1,4 @@
-export async function getImages() {
+async function getImages() {
     try {
         await fetch(DOG_API)
             .then(res => res.json())
@@ -12,7 +12,7 @@ export async function getImages() {
 
 }
 
-export function renderNumbersOfImage(numbers) {
+function renderNumbersOfImage(numbers) {
 
     numbers = numbers / itemsOnPage;
 
@@ -26,7 +26,7 @@ export function renderNumbersOfImage(numbers) {
     }
 }
 
-export function printImages(array) {
+function printImages(array) {
 
     if (divContainerImg.children.length !== 0) {
         divContainerImg.innerHTML = '';
