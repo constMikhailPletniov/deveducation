@@ -1,94 +1,98 @@
 /*1. Создать реализацию Linked List на JS используя функциональный подход.
 Необходимый функционал:*/
 
-function Node(element) {
-    this.element = element;
-    this.next = null;
+function LinkedList() {
+    this.head = null;
+    this.size = 0;
+
+    this.length = () => {
+        return this.size;
+    };
+
+    this.Head = () => {
+        return this.head;
+    };
+
+    this.add = (item) => {
+        this.head = new Node(item, this.head);
+        this.size++;
+        return;
+    };
+    this.remove = () => {
+        if (!this.head) return;
+        this.head = this.head.next;
+        this.size--;
+        return;
+    };
 }
 
-function LinkedList(size = 0, head = null) {
-
-    this.size = () => {
-        return size;
-    };
-
-    this.head = () => {
-        return head;
-    };
-
-    this.add = (element) => {
-        let node;
-        let currentNode;
-        if (Array.isArray(element)) {
-            for (const item of element) {
-                node = new Node(item);
-                if (head === null) {
-                    head = node;
-                } else {
-                    currentNode = head;
-
-                    while (currentNode.next) {
-                        return currentNode = currentNode.next;
-                    }
-                    size++;
-                    return currentNode.next = node;
-                }
-            }
-        } else {
-            node = new Node(element);
-        }
-        if (head === null) {
-            head = node;
-        } else {
-            currentNode = head;
-
-            while (currentNode.next) {
-                return currentNode = currentNode.next;
-            }
-            size++;
-            currentNode.next = node;
-        }
-
-
-        return head;
-    };
-
-    this.remove = (element) => {
-        let currentNode = head;
-        let prevNode;
-        if (currentNode.element === element) {
-            head = currentNode.next;
-        }
-        while (currentNode.element !== element) {
-            prevNode = currentNode;
-            currentNode = currentNode.next;
-        }
-
-        prevNode.next = currentNode.next;
-
-        size--;
-        return head;
-    };
-
+function Node(value, next = null) {
+    this.value = value;
+    this.next = next;
 }
 
-const link = new LinkedList();
+const link = new LinkedList;
 
-link.add(['f', 'c', 'd'])
-link.add(2)
+function checkInput() {
 
-printList(link);
+    if (this.textContent === 'Add') {
+        link.add(elementsDom.inputValues.value);
+        printList(link);
+    }
+    if (this.textContent === 'Remove') {
+        removePrintList(link);
+        link.remove();
+    }
+}
 
 function printList(item) {
 
-    if (item.size() === 0) return;
-    const size = item.size();
-    const head = item.head();
+    const head = item.Head();
+    const article = document.createElement('article');
+    elementsDom.sectionOutList.prepend(article);
 
     for (const key of Object.values(head)) {
-
         const div = document.createElement('div');
+        div.className = 'linked-items';
+        if (typeof key === 'object' && key !== null) {
+            for (const item of Object.values(key)) {
+                const div = document.createElement('div');
 
+                div.className = 'linked-items';
+                article.append(div);
+                div.append(item);
+                return;
+            }
+
+        }
+
+        article.append(div);
+
+        div.append(key);
 
     }
 }
+
+function removePrintList() {
+
+    for (let i = 0; i <= document.getElementsByClassName('linked-items').length; i++) {
+
+        if (i === document.getElementsByClassName('linked-items').length - 1) {
+
+            document.getElementsByClassName('linked-items')[i].remove();
+            document.getElementsByClassName('linked-items')[i - 1].remove();
+            if (document.getElementsByClassName('linked-items')[i - 2] === undefined) return;
+
+            document.getElementsByClassName('linked-items')[i - 2].textContent = 'null';
+        }
+    }
+    for (let i = 0; i <= document.getElementsByTagName('article').length; i++) {
+        if (i === document.getElementsByTagName('article').length - 1) {
+            document.getElementsByTagName('article')[i].remove();
+        }
+    }
+    return;
+}
+
+elementsDom.buttonAdd.addEventListener('click', checkInput);
+elementsDom.buttonRemove.addEventListener('click', checkInput);
