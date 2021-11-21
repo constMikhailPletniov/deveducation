@@ -1,23 +1,25 @@
+import { initial } from './initial';
+import { printImages } from './getImage';
 
-function paginations() {
-    for (const item of LI_TAG) {
+export function paginations() {
+    for (const item of initial.LI_TAG) {
         item.classList.remove('active');
     }
     this.classList.add('active');
     return getPieceOfArray(this.textContent);
 }
-function getPreviousPage() {
+export function getPreviousPage() {
     let prev;
 
-    for (let i = LI_TAG.length - 1; i >= 0; i--) {
-        if (LI_TAG[i].className === 'active') {
-            LI_TAG[i].classList.remove('active');
+    for (let i = initial.LI_TAG.length - 1; i >= 0; i--) {
+        if (initial.LI_TAG[i].className === 'active') {
+            initial.LI_TAG[i].classList.remove('active');
             i--;
-            if (LI_TAG[i] === undefined) {
-                i = LI_TAG.length - 1;
+            if (initial.LI_TAG[i] === undefined) {
+                i = initial.LI_TAG.length - 1;
             }
-            LI_TAG[i].classList.add('active');
-            prev = Number(LI_TAG[i].innerHTML);
+            initial.LI_TAG[i].classList.add('active');
+            prev = Number(initial.LI_TAG[i].innerHTML);
         }
     }
 
@@ -25,29 +27,29 @@ function getPreviousPage() {
 
 }
 
-function getNextPage() {
+export function getNextPage() {
     let current;
-    for (let i = 0; i < LI_TAG.length; i++) {
-        if (LI_TAG[i].className === 'active') {
-            LI_TAG[i].classList.remove('active');
+    for (let i = 0; i < initial.LI_TAG.length; i++) {
+        if (initial.LI_TAG[i].className === 'active') {
+            initial.LI_TAG[i].classList.remove('active');
             i++;
-            if (LI_TAG[i] === undefined) {
+            if (initial.LI_TAG[i] === undefined) {
                 i = 0;
             }
-            LI_TAG[i].classList.add('active');
-            current = Number(LI_TAG[i].innerHTML);
+            initial.LI_TAG[i].classList.add('active');
+            current = Number(initial.LI_TAG[i].innerHTML);
         }
     }
 
     return getPieceOfArray(current);
 }
 
-function getPieceOfArray(current) {
+export function getPieceOfArray(current) {
 
-    let start = (current - 1) * itemsOnPage;
-    let end = start + itemsOnPage;
+    let start = (current - 1) * initial.itemsOnPage;
+    let end = start + initial.itemsOnPage;
 
-    let numberOfItems = apiArray.slice(start, end);
+    let numberOfItems = initial.apiArray.slice(start, end);
 
     return printImages(numberOfItems);
 }

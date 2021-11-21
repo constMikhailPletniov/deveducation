@@ -1,5 +1,6 @@
+import { initial } from './initial';
 
-function getBigImage() {
+export function getBigImage() {
     const div = document.createElement('div');
     const img = document.createElement('img');
     const button = document.createElement('button');
@@ -9,7 +10,7 @@ function getBigImage() {
     button.className = 'buttons';
     button.textContent = 'Remove';
     button.id = 'remove-btn';
-    divContainerImg.prepend(div);
+    initial.divContainerImg.prepend(div);
     div.prepend(img);
     div.prepend(button);
     img.src = this.src;
@@ -17,7 +18,7 @@ function getBigImage() {
     const BUTTON_REMOVE_BIG_IMAGE = document.getElementById('remove-btn');
     BUTTON_REMOVE_BIG_IMAGE.addEventListener('click', removeBigImageBtn);
 }
-function removeBigImageBtn(e) {
+export function removeBigImageBtn(e) {
     return e.target.parentElement.style.display = 'none';
 
 }
