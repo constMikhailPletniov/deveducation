@@ -1,0 +1,45 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "todoList for class style and MCV pattern",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest",
+    "jest": {
+      "transform": {
+        "^.+\\.[t|j]sx?$": "babel-jest"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/constMikhailPletniov/deveducation.git"
+  },
+  "keywords": [
+    "mcv"
+  ],
+  "author": "Mikhail Pletniov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/constMikhailPletniov/deveducation/issues"
+  },
+  "homepage": "https://github.com/constMikhailPletniov/deveducation#readme",
+  "dependencies": {
+    "-": "^0.0.1",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "jsdom": "^18.1.1",
+    "webpack": "^5.64.4"
+  },
+  "devDependencies": {
+    "babel-jest": "^27.3.1",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.3.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.3.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.2.6"
+  }
+}

@@ -1,0 +1,131 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+html,body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+   box-sizing: border-box;
+}
+.header{
+    position: relative;
+    height: 10vh;
+    background-color: #4F4789;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    position: relative;
+    display: flex;
+justify-content: center;
+align-items: flex-start;
+height: 80vh;
+background-color: #FFFDED;
+}
+.mainContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+background-color: #007CBE;
+padding: 10px;
+margin-top: 10px;
+border-radius: 1.5%;
+}
+#formToDo{
+    position: relative;
+    display: flex;
+justify-content: center;
+align-items: center;
+height: 30%;
+padding: 20px;
+background-color: #4F4789;
+margin-top: 10px;
+width: 50vw;
+
+}
+#inputSubmit{
+    border-radius: 5%;
+    padding: 10px 20px;
+    margin-left: 5px;
+    background-color: #007CBE;
+    color:#fff;
+}
+#inputSubmit:hover{
+   background-color:  #36827F;
+   transition: 1s;
+   color: #fff;
+}
+#textAreaText{
+    width: 50vw;
+}
+
+#textAreaText:hover{
+    background-color: #007CBE;
+    color: #fff;
+}
+.listPlans{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-basis: 90%;
+}
+.out{
+    margin: 10px 0px 0px 0px;
+    background-color: #4F4789;
+    width: 52vw;
+    position: relative;
+    display: flex;
+justify-content: center;
+align-items: flex-start;
+}
+.footer{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: #4F4789;
+}
+p, h1, h2{
+    color:#fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+p{
+    overflow-wrap: break-word;
+    width: 80%;
+}
+.btnDelete{
+    border-radius: 5%;
+    padding: 10px 20px;
+    margin-left: 5px;
+    background-color: #ff0000;
+    color:#fff;
+}
+.btnDelete:hover{
+    transition: 1s;
+    background-color: #5f0000;
+}
+li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    border-bottom: 1px solid #FCE762;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 45vw;
+}
+.plansItem{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 20px;
+    flex-basis: 90%;
+    width: 50%;
+}
