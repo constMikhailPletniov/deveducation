@@ -28,6 +28,7 @@
   "dependencies": {
     "-": "^0.0.1",
     "@babel/core": "^7.16.0",
+    "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.16.4",
     "babel-loader": "^8.2.3",
     "jsdom": "^18.1.1",
@@ -35,6 +36,8 @@
   },
   "devDependencies": {
     "babel-jest": "^27.3.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
     "eslint": "^8.3.0",
     "html-webpack-plugin": "^5.5.0",

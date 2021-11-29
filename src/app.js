@@ -36,8 +36,3 @@ export function getPlansItem(e) {
     return;
 }
 
-module.exports = {
-    getPlansItem,
-    getFormAction,
-    getStorageData
-}

@@ -18,5 +18,5 @@ const elementsOfDom = {
     allDivPlansItem: document.getElementsByClassName(selectorsCss.classPlansItem)
 };
 
-module.exports = elementsOfDom;
+
 export default elementsOfDom;
