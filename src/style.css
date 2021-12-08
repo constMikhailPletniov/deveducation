@@ -1,0 +1,133 @@
+   * {
+  margin: 0;
+  padding: 0;
+    }
+    html,body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    }
+
+    .header,.footer{
+    width: 100vw;
+    height: 5vh;
+    background-color: #dadac0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .wrapper{
+    width: 100vw;
+    height: 90vh;
+    background-color: rgb(190, 180, 245);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .h1, .h3{
+    font-family: Arial, Helvetica, sans-serif;
+    }
+    .containerImage{
+    width: 70vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    }
+
+    #slides {
+    position: relative;
+    height: 70vh;
+    width: 50vw;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+    }
+    .slide {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 1;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+    }
+
+    .showImage {
+    opacity: 1;
+    z-index: 2;
+    display: flex;
+    
+    }
+    .showImage::after{
+    animation-name: imageOut;
+    animation-duration: 1s;
+    }
+
+    .slide {
+    font-size: 40px;
+    padding: 3px;
+    box-sizing: border-box;
+    background-color: rgb(224, 205, 236);
+    
+    }
+
+    .containerButtons{
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    }
+    .buttons{
+    min-width: 50px;
+    min-height: 50px;
+    background-color: rgba(0,0,0, 0.1);
+    color:rgb(255,255,255);
+    border: 2px solid rgb(255,255,255);
+   
+    }
+    .buttons:hover{
+    background-color: rgb(255,255,255);
+    color: rgb(0,0,0);
+    box-shadow: 10px 10px 5px rgb(97, 95, 94);
+    }
+    #nextBtn{
+    background-image: url('./images/next.svg');
+    }
+    #prevBtn{
+    background-image: url('./images/prev.svg');
+    }
+
+    .pause{
+    background-image: url('./images/play.svg');
+    }
+    .play{
+    background-image: url('./images/pause.svg');
+    }
+    .imageItem{
+    width: 100%;
+    height: 100%;
+    }
+
+    @keyframes imageOut {
+    0%{
+        transform: translateX(0px);
+    opacity: 1;
+    transition-duration: 1s;
+    }
+    100%{
+        transition-duration: 1s;
+        transform: translateX(200px);
+    opacity: 0;
+    }
+    }
