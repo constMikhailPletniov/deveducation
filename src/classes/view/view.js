@@ -6,6 +6,9 @@ const slides = domElements.ulIdSlides.children;
 let time = null;
 
 export default class View {
+    constructor() {
+        this.delay = 5000;
+    }
 
     getNextImage() {
         for (const item of slides) {
@@ -40,7 +43,7 @@ export default class View {
 
     showImageByInterval() {
         this.getNextImage();
-        time = setTimeout(this.showImageByInterval.bind(this), 5000);
+        time = setTimeout(this.showImageByInterval.bind(this), this.delay);
     }
 
     pauseShowImage() {

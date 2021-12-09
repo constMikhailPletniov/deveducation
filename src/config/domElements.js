@@ -5,7 +5,7 @@ const selectorsCss = {
     idNextBtn: '#nextBtn',
     idControllBtn: '#controllBtn',
     idPrevBtn: '#prevBtn',
-    idSlides: '#slides'
+    idSlides: '#slides',
 };
 
 
@@ -16,5 +16,5 @@ export const domElements = {
     buttonIdNextBtn: document.querySelector(selectorsCss.idNextBtn),
     buttonIdControllBtn: document.querySelector(selectorsCss.idControllBtn),
     buttonIdPrevBtn: document.querySelector(selectorsCss.idPrevBtn),
-    ulIdSlides: document.querySelector(selectorsCss.idSlides)
+    ulIdSlides: document.querySelector(selectorsCss.idSlides),
 };

@@ -9,4 +9,5 @@ export default class Controller {
         return model.changeImages(this.id);
 
     };
+
 }
