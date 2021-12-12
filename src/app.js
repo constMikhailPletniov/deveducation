@@ -1,51 +1,39 @@
 const http = require('http');
-const url = require('url');
-const router = require('node-router');
+const { router } = require('./routers/router');
 require('dotenv').config();
-const db = require('./dataBases');
+require('./dataBase/dataBases');
 
-const { PORT, GET, POST, PUT, DELETE } = require('./config/connstants');
+const { PORT, GET, POST, PUT, DELETE, STATUS_CODE } = require('./config/connstants');
 
-http.createServer((req, res) => {
 
-    const urlReq = url.parse(req.url, true);
 
-    if (urlReq.method === GET) {
-        switch (true) {
-            case (urlReq === '/'):
-            default:
-                res.statusCode = 404;
-                res.end('Error');
-        }
-    }
+http.createServer(async (req, res) => {
 
-    if (urlReq.method === POST) {
-        switch (true) {
-            case (urlReq === '/'):
-            default:
-                res.statusCode = 404;
-                res.end('Error');
-        }
-    }
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Content-Type', 'application/json, text/plain; charset=utf-8;');
+    res.setHeader('Access-Control-Max-Age', '-1');
 
-    if (urlReq.method === PUT) {
-        switch (true) {
-            case (urlReq === '/'):
-            default:
-                res.statusCode = 404;
-                res.end('Error');
-        }
-    }
+    req.on('error', (err) => {
+        console.error('Server error: ', err);
+        res.statusCode = STATUS_CODE.INTERNAL_ERROR;
+        res.end(JSON.stringify({ message: error }));
+    });
 
-    if (urlReq.method === DELETE) {
-        switch (true) {
-            case (urlReq === '/'):
-            default:
-                res.statusCode = 404;
-                res.end('Error');
-        }
-    }
+    const buffer = [];
 
-}).listen(PORT, () => {
-    console.log(`App Work on ${PORT}`);
-});
+    req.on('data', chunk => {
+        buffer.push(chunk);
+    });
+
+    req.on('end', async () => {
+        const body = buffer.length ?
+            JSON.parse(buffer) : JSON.stringify({ message: "body empty" });
+        await router({ req, res, body });
+    });
+
+})
+    .listen(PORT, () => {
+        console.log(`App Work on ${PORT}`);
+    });
