@@ -3,7 +3,7 @@ const { router } = require('./routers/router');
 require('dotenv').config();
 require('./dataBase/dataBases');
 
-const { PORT, GET, POST, PUT, DELETE, STATUS_CODE } = require('./config/connstants');
+const { PORT, STATUS_CODE } = require('./config/connstants');
 
 
 

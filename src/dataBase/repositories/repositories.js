@@ -1,3 +1,4 @@
+const connstants = require('../../config/connstants');
 const client = require('../dataBases');
 
 
@@ -175,15 +176,31 @@ const getStudentByCoursesId = async ({ page, perPage, name }) => {
     }
 };
 
-const addStudentToCourses = async ({ student_id, course_id, user_role }) => {
+const addStudentToCourses = async ({ student_id, course_id }) => {
     try {
-        if (user_role !== 'student') return { result: { message: "the user is not a student" } };
+
         const result = client.query(`INSERT INTO students_courses(student_id, course_id)
         VALUES(${student_id},${course_id});`);
         return { result: result.rows };
     } catch (err) {
         console.error('repo addStudentToCourses: ', err);
     }
+};
+
+const addMarksToStudentsCourses = async ({ mark, student_id, course_id, university_id, teacher_id }) => {
+    try {
+        await client.query(`INSERT INTO marks(mark, student_id, course_id, university_id, teacher_id)
+        VALUES(${mark},${student_id}, ${course_id}, ${university_id}, ${teacher_id});`);
+        return { result: true };
+    } catch (err) {
+        console.error('repo addMarksToStudentsCourses: ', err);
+    }
+};
+
+const getStudentsRatingByCourseId = async ({ id, perPage }) => {
+    const result = await client.query(`SELECT AVG(mark) FROM marks INNER JOIN courses ON course_id = courses.id
+    INNER JOIN users ON student_id = users.id`);
+    return { result: result };
 };
 module.exports = {
     createUniversity,
@@ -197,5 +214,7 @@ module.exports = {
     deleteStudentById,
     getUsersByUniversityId,
     getStudentByCoursesId,
-    addStudentToCourses
+    addStudentToCourses,
+    getStudentsRatingByCourseId,
+    addMarksToStudentsCourses
 }

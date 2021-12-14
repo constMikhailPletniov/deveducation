@@ -4,7 +4,6 @@ const repositories = require('../dataBase/repositories/repositories');
 
 const createUniversity = async (body) => {
     try {
-
         validateUniversities.validateAsync(body);
         const { error: dbError, result } = await repositories.createUniversity(body);
 
@@ -13,12 +12,11 @@ const createUniversity = async (body) => {
     } catch (err) {
         console.error('createUniversity error: ', error);
     }
-
 };
 
 const getUniversityById = async (id) => {
     try {
-        const { error: dbError, result } = await repositories.getUniversityById(id);
+        const { dbError, result } = await repositories.getUniversityById(id);
         if (dbError) return { error: constants.STATUS_CODE.INTERNAL_ERROR, data: { error } };
         return { data: result };
     } catch (err) {

@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const connstants = require('../config/connstants');
 const constants = require('../config/connstants');
 
 const validateUniversities = Joi.object({
@@ -25,9 +26,14 @@ const validateStudentToCourse = Joi.object({
     student_id: Joi.number().positive().min(constants.NUMS.ONE).required(),
     course_id: Joi.number().positive().min(constants.NUMS.ONE).required()
 });
+
+const validateMarks = Joi.object({
+    mark: Joi.number().positive().min(connstants.NUMS.ONE).max(connstants.NUMS.HUNDRED).required()
+});
 module.exports = {
     validateUniversities,
     validateUsers,
     validateCourses,
-    validateStudentToCourse
+    validateStudentToCourse,
+    validateMarks
 }
