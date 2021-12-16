@@ -10,6 +10,16 @@ const checkUserRole = async (user_id) => {
     }
 }
 
+const checkUserByParams = async (query) => {
+    try {
+        const check = await client.query(`SELECT * FROM users
+            WHERE users.id = ${query.id};`);
+        return check.rows[0];
+    } catch (err) {
+        console.error('serv checkUserByParams: ', err);
+    }
+};
+
 const checkUsersByUniversity = async (user_id) => {
     try {
         const check = await client.query(`SELECT universities_id, universities.id FROM users INNER JOIN universities
@@ -33,8 +43,9 @@ const checkTeacherCourses = async (course_id, teacher_id) => {
 
 const checkStudentCourses = async (course_id, student_id) => {
     try {
-        await client.query(`SELECT student_id, course_id FROM students_courses WHERE student_id = ${student_id} AND course_id = ${course_id};`);
-        return true;
+        const check = await client.query(`SELECT student_id, course_id FROM students_courses WHERE student_id = ${student_id} AND course_id = ${course_id};`);
+        console.log(check);
+        return check;
     } catch (err) {
         console.error('serv checkTeacherCourses: ', err);
     }
@@ -44,5 +55,6 @@ module.exports = {
     checkUserRole,
     checkUsersByUniversity,
     checkTeacherCourses,
-    checkStudentCourses
+    checkStudentCourses,
+    checkUserByParams
 }

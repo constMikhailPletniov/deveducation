@@ -1,5 +1,6 @@
-const connstants = require('../../config/connstants');
+
 const client = require('../dataBases');
+const { STATUS_CODE } = require('../../config/connstants');
 
 
 const createUniversity = async ({ uni_name, country, city, accreditation }) => {
@@ -199,9 +200,20 @@ const addMarksToStudentsCourses = async ({ mark, student_id, course_id, universi
 
 const getStudentsRatingByCourseId = async ({ id, perPage }) => {
     const result = await client.query(`SELECT AVG(mark) FROM marks INNER JOIN courses ON course_id = courses.id
-    INNER JOIN users ON student_id = users.id`);
+    INNER JOIN users ON student_id = users.id;`);
     return { result: result };
 };
+
+const updateStudentsData = async (query, body) => {
+    try {
+        const result = await client.query(`UPDATE users SET first_name='${body.first_name}', 
+        last_name='${body.last_name}', age=${body.age}, universities_id=${body.universities_id} WHERE users.id=${query.id};`);
+        return { data: STATUS_CODE.UPDATED };
+    } catch (err) {
+        console.error('repo updateStudentsData: ', err);
+    }
+};
+
 module.exports = {
     createUniversity,
     getUniversityById,
@@ -216,5 +228,6 @@ module.exports = {
     getStudentByCoursesId,
     addStudentToCourses,
     getStudentsRatingByCourseId,
-    addMarksToStudentsCourses
+    addMarksToStudentsCourses,
+    updateStudentsData
 }

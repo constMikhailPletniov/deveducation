@@ -16,7 +16,9 @@ module.exports = {
     STATUS_CODE: {
         NOT_FOUND: 404,
         INTERNAL_ERROR: 500,
-        OK: 200
+        OK: 200,
+        CREATED: 201,
+        UPDATED: 204
     },
     NUMS: {
         ONE: 1,

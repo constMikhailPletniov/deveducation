@@ -30,6 +30,8 @@
   },
   "devDependencies": {
     "eslint": "^8.4.1",
-    "jest": "^27.4.4"
+    "jest": "^27.4.4",
+    "swagger": "^0.7.5",
+    "swagger-editor": "^4.0.4"
   }
 }

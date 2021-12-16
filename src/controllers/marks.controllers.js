@@ -25,12 +25,12 @@ const addMarksToStudents = async ({ mark, student_id, course_id, university_id, 
         if (!student === 'student' && !teacher === 'teacher') return { error: constants.STATUS_CODE.INTERNAL_ERROR, data: { error } };
         const student_uni = await usersServices.checkUsersByUniversity(student_id);
         const teacher_uni = await usersServices.checkUsersByUniversity(teacher_id);
-        if (student_uni !== teacher_uni) return { error: constants.STATUS_CODE.INTERNAL_ERROR, data: { error } };
+        if (student_uni.universities_id !== teacher_uni.universities_id) return { error: constants.STATUS_CODE.INTERNAL_ERROR, data: { error } };
         const checkCourse = await usersServices.checkTeacherCourses(course_id, teacher_id);
         const checkStudentCourse = await usersServices.checkStudentCourses(course_id, student_id);
         if (checkCourse !== checkStudentCourse) return { error: constants.STATUS_CODE.INTERNAL_ERROR, data: { error } };
-        const { error: dbError7, result } = await repositories.addMarksToStudentsCourses({ mark, student_id, course_id, university_id, teacher_id });
-
+        const { error: dbError, result } = await repositories.addMarksToStudentsCourses({ mark, student_id, course_id, university_id, teacher_id });
+        if (dbError) return { error: constants.STATUS_CODE.INTERNAL_ERROR, data: { error } };
         return { data: result };
 
     } catch (err) {

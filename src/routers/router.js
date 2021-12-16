@@ -59,6 +59,9 @@ async function router({ req, res, body }) {
             case (req.method === METHOD.POST && pathname === ENDPOINTS.RATING):
                 ({ error, data } = await marksControllers.addMarksToStudents(body));
                 break;
+            case (req.method === METHOD.PUT && pathname === ENDPOINTS.USERS):
+                ({ error, data } = await usersControllers.updateStudentsData(query, body));
+                break;
             default:
                 res.statusCode = constants.STATUS_CODE.NOT_FOUND;
                 return res.end(JSON.stringify({ "message": "Invalid request" }));
