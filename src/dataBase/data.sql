@@ -41,8 +41,10 @@ CREATE TABLE marks(
     student_id INT NOT NULL,
     course_id INT NOT NULL,
     university_id INT NOT NULL,
+    teacher_id INT NOT NULL,
     FOREIGN KEY(university_id) REFERENCES universities(id),
     FOREIGN KEY(student_id) REFERENCES users(id),
+    FOREIGN KEY(teacher_id) REFERENCES users(id),
     FOREIGN KEY(course_id) REFERENCES courses(id)
 );
 

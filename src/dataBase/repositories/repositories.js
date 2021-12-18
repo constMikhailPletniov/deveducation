@@ -1,4 +1,6 @@
+
 const client = require('../dataBases');
+const { STATUS_CODE } = require('../../config/connstants');
 
 
 const createUniversity = async ({ uni_name, country, city, accreditation }) => {
@@ -175,9 +177,9 @@ const getStudentByCoursesId = async ({ page, perPage, name }) => {
     }
 };
 
-const addStudentToCourses = async ({ student_id, course_id, user_role }) => {
+const addStudentToCourses = async ({ student_id, course_id }) => {
     try {
-        if (user_role !== 'student') return { result: { message: "the user is not a student" } };
+
         const result = client.query(`INSERT INTO students_courses(student_id, course_id)
         VALUES(${student_id},${course_id});`);
         return { result: result.rows };
@@ -185,6 +187,33 @@ const addStudentToCourses = async ({ student_id, course_id, user_role }) => {
         console.error('repo addStudentToCourses: ', err);
     }
 };
+
+const addMarksToStudentsCourses = async ({ mark, student_id, course_id, university_id, teacher_id }) => {
+    try {
+        await client.query(`INSERT INTO marks(mark, student_id, course_id, university_id, teacher_id)
+        VALUES(${mark},${student_id}, ${course_id}, ${university_id}, ${teacher_id});`);
+        return { result: true };
+    } catch (err) {
+        console.error('repo addMarksToStudentsCourses: ', err);
+    }
+};
+
+const getStudentsRatingByCourseId = async ({ id, perPage }) => {
+    const result = await client.query(`SELECT AVG(mark) FROM marks INNER JOIN courses ON course_id = courses.id
+    INNER JOIN users ON student_id = users.id;`);
+    return { result: result };
+};
+
+const updateStudentsData = async (query, body) => {
+    try {
+        const result = await client.query(`UPDATE users SET first_name='${body.first_name}', 
+        last_name='${body.last_name}', age=${body.age}, universities_id=${body.universities_id} WHERE users.id=${query.id};`);
+        return { data: STATUS_CODE.UPDATED };
+    } catch (err) {
+        console.error('repo updateStudentsData: ', err);
+    }
+};
+
 module.exports = {
     createUniversity,
     getUniversityById,
@@ -197,5 +226,8 @@ module.exports = {
     deleteStudentById,
     getUsersByUniversityId,
     getStudentByCoursesId,
-    addStudentToCourses
+    addStudentToCourses,
+    getStudentsRatingByCourseId,
+    addMarksToStudentsCourses,
+    updateStudentsData
 }

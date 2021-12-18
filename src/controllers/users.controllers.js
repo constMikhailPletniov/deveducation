@@ -1,6 +1,7 @@
 const constants = require('../config/connstants');
 const { validateUsers } = require('../utils/validate');
 const repositories = require('../dataBase/repositories/repositories');
+const { usersServices } = require('../dataBase/services');
 
 const addTeacherToUniversity = async ({ user_role, first_name, last_name, age, universities_id }) => {
     try {
@@ -45,9 +46,19 @@ const deleteStudent = async (id) => {
     }
 };
 
+const updateStudentsData = async (query, body) => {
+    try {
+        const result = await repositories.updateStudentsData(query, body);
+        return { data: result };
+    } catch (err) {
+        console.error('cont updateStudentsData: ', err);
+    }
+};
+
 module.exports = {
     addTeacherToUniversity,
     addStudentToUniversity,
     getUsersByUniversityId,
     deleteStudent,
+    updateStudentsData
 }

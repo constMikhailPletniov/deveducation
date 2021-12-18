@@ -23,9 +23,13 @@ async function router({ req, res, body }) {
                 break;
             case (req.method === METHOD.POST && pathname === ENDPOINTS.USERS):
                 if (body.user_role === 'teacher') {
+
                     ({ error, data } = await usersControllers.addTeacherToUniversity(body));
                     break;
                 };
+                if (body.user_role !== 'student') {
+                    return { error: { message: "Invalid user role" } };
+                }
                 ({ error, data } = await usersControllers.addStudentToUniversity(body));
                 break;
             case (req.method === METHOD.GET && pathname === ENDPOINTS.USERS):
@@ -41,16 +45,22 @@ async function router({ req, res, body }) {
                 ({ error, data } = await coursesControllers.deleteCourses(query));
                 break;
             case (req.method === METHOD.DELETE && pathname === ENDPOINTS.USERS):
-                ({ err, data } = await usersControllers.deleteStudent(query.id));
+                ({ error, data } = await usersControllers.deleteStudent(query.id));
                 break;
             case (req.method === METHOD.GET && pathname === ENDPOINTS.STUDENTS_COURSES):
-                ({ err, data } = await students_coursesControllers.getStudentByCoursesId(query));
+                ({ error, data } = await students_coursesControllers.getStudentByCoursesId(query));
                 break;
             case (req.method === METHOD.POST && pathname === ENDPOINTS.STUDENTS_COURSES):
-                ({ err, data } = await students_coursesControllers.addStudentToCourses(body));
+                ({ error, data } = await students_coursesControllers.addStudentToCourses(body));
                 break;
             case (req.method === METHOD.GET && pathname === ENDPOINTS.RATING):
-                ({ err, data } = await marksControllers.getStudentsRatingByCourseId(query));
+                ({ error, data } = await marksControllers.getStudentsRatingByCourseId(query));
+                break;
+            case (req.method === METHOD.POST && pathname === ENDPOINTS.RATING):
+                ({ error, data } = await marksControllers.addMarksToStudents(body));
+                break;
+            case (req.method === METHOD.PUT && pathname === ENDPOINTS.USERS):
+                ({ error, data } = await usersControllers.updateStudentsData(query, body));
                 break;
             default:
                 res.statusCode = constants.STATUS_CODE.NOT_FOUND;

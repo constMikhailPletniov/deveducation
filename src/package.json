@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "test"
+    "test": "jest",
+    "lint": "eslint"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,9 @@
     "pg": "^8.7.1"
   },
   "devDependencies": {
-    "eslint": "^8.4.1"
+    "eslint": "^8.4.1",
+    "jest": "^27.4.4",
+    "swagger": "^0.7.5",
+    "swagger-editor": "^4.0.4"
   }
 }
