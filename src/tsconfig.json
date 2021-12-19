@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "ES6",
+        "strict": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "strictNullChecks": false
+    },
+    "include": [
+        "./ts/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

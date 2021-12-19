@@ -1,6 +1,6 @@
 import '../style.css';
 import { domElements } from './domElements';
-import { TArr } from './types';
+import { TArr, TAcc } from './types';
 
 function getCookingTime(eggsAmount: number) {
 
@@ -98,7 +98,7 @@ function countCharacters(string: string | Array<string>) {
             }
             return { ...acc, [curr]: count }
 
-        }, {});
+        }, {} as TAcc);
         domElements.divOutFour.textContent = `Task 4: ${JSON.stringify(obj)}`;
 
     }

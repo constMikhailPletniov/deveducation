@@ -2,7 +2,7 @@ const path = require("path");
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
-    entry: "./src/js/index.ts",
+    entry: "./ts/app.ts",
     mode: "development",
     module: {
         rules: [
@@ -26,11 +26,11 @@ module.exports = {
         extensions: [".ts", ".js"],
     },
     plugins: [
-        new HtmlWebpackPlugin({ template: "./src/index.html" }),
+        new HtmlWebpackPlugin({ template: "./index.html" }),
         new ForkTsCheckerWebpackPlugin({
             async: false,
             eslint: {
-                files: "./src/js/*",
+                files: "./ts/*",
             },
         }),
     ],
