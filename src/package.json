@@ -1,0 +1,24 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "typescript for asynchronous",
+  "main": "app.ts",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/constMikhailPletniov/deveducation.git"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Mikhail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/constMikhailPletniov/deveducation/issues"
+  },
+  "homepage": "https://github.com/constMikhailPletniov/deveducation#readme"
+}
