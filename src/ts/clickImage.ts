@@ -1,16 +1,8 @@
-import { initial } from './initial';
+import { elementsDom } from './initial';
 
-export function getBigImage() {
-    const div = document.createElement('div');
-    const img = document.createElement('img');
-    const button = document.createElement('button');
+export function getBigImage(): void {
 
-    div.className = 'big-image-container';
-    img.className = 'big-image-item';
-    button.className = 'buttons';
-    button.textContent = 'Remove';
-    button.id = 'remove-btn';
-    initial.divContainerImg.prepend(div);
+    elementsDom.divContainerImg.prepend(div);
     div.prepend(img);
     div.prepend(button);
     img.src = this.src;
@@ -18,7 +10,7 @@ export function getBigImage() {
     const BUTTON_REMOVE_BIG_IMAGE = document.getElementById('remove-btn');
     BUTTON_REMOVE_BIG_IMAGE.addEventListener('click', removeBigImageBtn);
 }
-export function removeBigImageBtn(e) {
-    return e.target.parentElement.style.display = 'none';
+export function removeBigImageBtn(e: Event): void {
+    (<HTMLElement>e.target).parentElement.style.display = 'none';
 
 }
