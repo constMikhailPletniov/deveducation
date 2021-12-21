@@ -7,7 +7,7 @@ export function getBigImage(): void {
     div.prepend(button);
     img.src = this.src;
 
-    const BUTTON_REMOVE_BIG_IMAGE = document.getElementById('remove-btn');
+    const BUTTON_REMOVE_BIG_IMAGE = <HTMLElement>document.getElementById('remove-btn');
     BUTTON_REMOVE_BIG_IMAGE.addEventListener('click', removeBigImageBtn);
 }
 export function removeBigImageBtn(e: Event): void {

@@ -13,16 +13,16 @@ export const selectorsCss = {
 };
 
 export const elementsDom = {
-    templateIdTemplateImageList: (<HTMLMetaElement>document.querySelector(selectorsCss.IdTemplateImageList)).content,
+    templateIdTemplateImageList: (document.querySelector(selectorsCss.IdTemplateImageList) as HTMLMetaElement).content,
     templateIdTemplateImageContainer: (<HTMLMetaElement>document.querySelector(selectorsCss.IdTemplateImageContainer)).content,
     templateIdTemplateBigImage: (<HTMLMetaElement>document.querySelector(selectorsCss.idTemplateBigImage)).content,
-    PREVIOUS_BUTTON: document.querySelector(selectorsCss.idBtnPrevious),
-    NEXT_BUTTON: document.querySelector(selectorsCss.idBtnNext),
+    PREVIOUS_BUTTON: (<HTMLElement>document.querySelector(selectorsCss.idBtnPrevious)),
+    NEXT_BUTTON: (<HTMLElement>document.querySelector(selectorsCss.idBtnNext)),
     IMG: document.getElementsByClassName(selectorsCss.classImageItem),
     BIG_IMAGE_DIV: document.querySelector(selectorsCss.classBigImageContainer),
-    divContainerImg: document.querySelector(selectorsCss.classContainerImages),
-    DIV_PAGINATION: document.querySelector(selectorsCss.classPagination),
-    UL_TAG: document.querySelector(selectorsCss.tagUl),
+    divContainerImg: (<HTMLElement>document.querySelector(selectorsCss.classContainerImages)),
+    DIV_PAGINATION: <HTMLElement>document.querySelector(selectorsCss.classPagination),
+    UL_TAG: <HTMLElement>document.querySelector(selectorsCss.tagUl),
     LI_TAG: document.getElementsByTagName(selectorsCss.tagLi),
 };
 

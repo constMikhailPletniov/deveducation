@@ -7,9 +7,9 @@ export async function getImages(): Promise<void> {
     try {
         const { data } = await axios.get(initial.DOG_API);
 
-        data.message.forEach((element: string) => initial.apiArray.push(element));
+        data.message.forEach((element: never) => initial.apiArray.push(element));
     } catch (err) {
-        console.log('api fail: ', err);
+        console.error('api fail: ', err);
     } finally {
         const page = initial.apiArray.length - 1;
         renderNumbersOfImage(page);
@@ -20,7 +20,7 @@ export async function getImages(): Promise<void> {
 function renderNumbersOfImage(numbers: number): void {
 
     numbers = numbers / initial.itemsOnPage;
-    elementsDom.templateIdTemplateImageList.cloneNode(true)
+    const li = elementsDom.templateIdTemplateImageList.cloneNode(true);
 
     for (let i = 1; i <= numbers; i++) {
         li.textContent = `${i}`;
@@ -29,6 +29,7 @@ function renderNumbersOfImage(numbers: number): void {
     for (const item of elementsDom.LI_TAG) {
         item.addEventListener('click', paginations);
     }
+
 }
 
 export function printImages(array: Array<string>): void {
@@ -37,16 +38,17 @@ export function printImages(array: Array<string>): void {
         elementsDom.divContainerImg.innerHTML = '';
     }
     let countId = 0;
+    const divElement = elementsDom.templateIdTemplateImageContainer;
+    divElement.cloneNode(true)
     for (const item of array) {
         if (countId === initial.itemsOnPage) return;
         countId++;
 
-        div.id = countId;
-        img.className = 'image-item';
-        img.id = `image-${countId}`;
-        img.src = item;
-        elementsDom.divContainerImg.prepend(div);
-        div.prepend(img);
+        divElement.id = countId;
+        divElement.IMG.id = `image-${countId}`;
+        divElement.IMG.src = item;
+        elementsDom.divContainerImg.prepend(divElement);
+        divElement.prepend(divElement.IMG);
         for (const item of elementsDom.IMG) {
             item.addEventListener('click', getBigImage);
         }
