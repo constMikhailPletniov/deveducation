@@ -20,10 +20,10 @@ export const elementsDom = {
     NEXT_BUTTON: (<HTMLElement>document.querySelector(selectorsCss.idBtnNext)),
     IMG: document.getElementsByClassName(selectorsCss.classImageItem),
     BIG_IMAGE_DIV: document.querySelector(selectorsCss.classBigImageContainer),
-    divContainerImg: (<HTMLElement>document.querySelector(selectorsCss.classContainerImages)),
+    divContainerImg: <HTMLElement>document.querySelector(selectorsCss.classContainerImages),
     DIV_PAGINATION: <HTMLElement>document.querySelector(selectorsCss.classPagination),
     UL_TAG: <HTMLElement>document.querySelector(selectorsCss.tagUl),
-    LI_TAG: document.getElementsByTagName(selectorsCss.tagLi),
+    LI_TAG: document.querySelectorAll(selectorsCss.tagLi),
 };
 
 export const initial = {

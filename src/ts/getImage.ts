@@ -10,12 +10,12 @@ export async function getImages(): Promise<void> {
         const { data } = await axios.get(initial.DOG_API);
 
         data.message.forEach((element: never) => initial.apiArray.push(element));
-        console.log('api: ', initial.apiArray);
     } catch (err) {
         console.error('api fail: ', err);
     } finally {
         const page = initial.apiArray.length - 1;
         renderNumbersOfImage(page);
+        printImages(initial.apiArray);
     }
 
 }
@@ -30,26 +30,19 @@ function renderNumbersOfImage(numbers: number): string {
     return elementsDom.UL_TAG.innerHTML = arr.map(item => item).join('');
 
 }
-
-// export function printImages(array: Array<string>): void {
-
-//     if (elementsDom.divContainerImg.children.length !== 0) {
-//         elementsDom.divContainerImg.innerHTML = '';
-//     }
-//     let countId = 0;
-//     const divElement = elementsDom.templateIdTemplateImageContainer;
-
-//     for (const item of array) {
-//         if (countId === initial.itemsOnPage) return;
-//         countId++;
-
-//         divElement.querySelector('div').id = countId;
-//         divElement.IMG.id = `image-${countId}`;
-//         divElement.IMG.src = item;
-//         elementsDom.divContainerImg.prepend(divElement);
-//         divElement.prepend(divElement.IMG);
-//         for (const item of elementsDom.IMG) {
-//             item.addEventListener('click', getBigImage);
-//         }
-//     }
-// }
+const printImagesArr: Array<string> = [];
+export function printImages(array: Array<string>): string | void {
+    console.log(array);
+    if (elementsDom.divContainerImg.children.length !== 0) {
+        elementsDom.divContainerImg.innerHTML = '';
+    }
+    let countId = 0;
+    for (const item of array) {
+        console.log(item);
+        if (countId === initial.itemsOnPage) return elementsDom.divContainerImg.innerHTML = printImagesArr.map(item => item).join('');
+        countId++;
+        console.log(printImagesArr);
+        printImagesArr.push(elementsDom.templateIdTemplateImageContainer.replace('{{id}}', `${countId}`)
+            .replace('{{item}}', `${item}`).replace('{{image-id}}', `image-${countId}`));
+    }
+}
