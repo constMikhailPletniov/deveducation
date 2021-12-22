@@ -30,18 +30,16 @@ function renderNumbersOfImage(numbers: number): string {
     return elementsDom.UL_TAG.innerHTML = arr.map(item => item).join('');
 
 }
+
 const printImagesArr: Array<string> = [];
 export function printImages(array: Array<string>): string | void {
-    console.log(array);
     if (elementsDom.divContainerImg.children.length !== 0) {
         elementsDom.divContainerImg.innerHTML = '';
     }
     let countId = 0;
     for (const item of array) {
-        console.log(item);
         if (countId === initial.itemsOnPage) return elementsDom.divContainerImg.innerHTML = printImagesArr.map(item => item).join('');
         countId++;
-        console.log(printImagesArr);
         printImagesArr.push(elementsDom.templateIdTemplateImageContainer.replace('{{id}}', `${countId}`)
             .replace('{{item}}', `${item}`).replace('{{image-id}}', `image-${countId}`));
     }

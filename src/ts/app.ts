@@ -1,8 +1,6 @@
 import { getImages } from './getImage';
-import './clickImage';
 import { getPreviousPage, getNextPage, paginations } from './pagination';
 import '../style.css';
-
 import { elementsDom } from './initial';
 
 window.addEventListener('DOMContentLoaded', getImages);
