@@ -12,7 +12,11 @@
     <main class="container">
         <section class="container-section-one">
             <div class="container-images">
-
+                <script type="text/template" id="template-image-container">
+                    <div id="{{id}}">
+                        <img src="{{item}}" alt="dog image" class="image-item">
+                    </div>
+                </script>
             </div>
             <div class="container-buttons">
                 <div class="button-prev-container">
@@ -20,20 +24,16 @@
                 </div>
                 <div class="pagination">
                     <ul></ul>
-                    <template id="template-image-list">
-                        <li></li>
-                    </template>
-                    <template id="template-image-container">
-                        <div>
-                            <img src="" alt="dog image" class="image-item">
-                        </div>
-                    </template>
-                    <template id="template-big-image">
+                    <script type="text/template" id="template-image-list">
+                        <li>{{item}}</li>
+                    </script>
+
+                    <script id="template-big-image">
                         <div class="big-image-container">
                             <img src="" alt="" class="big-image-item" />
                             <button class="buttons" id="remove-btn">Remove</button>
                         </div>
-                    </template>
+                    </script>
                 </div>
                 <div class="button-next-container">
                     <button class="buttons" id="btn-next">Next</button>

@@ -13,9 +13,9 @@ export const selectorsCss = {
 };
 
 export const elementsDom = {
-    templateIdTemplateImageList: (document.querySelector(selectorsCss.IdTemplateImageList) as HTMLMetaElement).content,
-    templateIdTemplateImageContainer: (<HTMLMetaElement>document.querySelector(selectorsCss.IdTemplateImageContainer)).content,
-    templateIdTemplateBigImage: (<HTMLMetaElement>document.querySelector(selectorsCss.idTemplateBigImage)).content,
+    templateIdTemplateImageList: <string>document.querySelector(selectorsCss.IdTemplateImageList)?.innerHTML,
+    templateIdTemplateImageContainer: <string>document.querySelector(selectorsCss.IdTemplateImageContainer)?.innerHTML,
+    templateIdTemplateBigImage: <string>document.querySelector(selectorsCss.idTemplateBigImage)?.innerHTML,
     PREVIOUS_BUTTON: (<HTMLElement>document.querySelector(selectorsCss.idBtnPrevious)),
     NEXT_BUTTON: (<HTMLElement>document.querySelector(selectorsCss.idBtnNext)),
     IMG: document.getElementsByClassName(selectorsCss.classImageItem),
