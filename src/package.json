@@ -1,0 +1,33 @@
+{
+  "name": "customerror",
+  "version": "1.0.0",
+  "description": "create custom error",
+  "main": "app.js",
+  "scripts": {
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/constMikhailPletniov/deveducation.git"
+  },
+  "keywords": [
+    "custom",
+    "error"
+  ],
+  "author": "Mikhail",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/constMikhailPletniov/deveducation/issues"
+  },
+  "homepage": "https://github.com/constMikhailPletniov/deveducation#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15",
+    "dotenv": "^10.0.0",
+    "joi": "^17.5.0",
+    "node-router": "^0.1.6",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.4.1"
+  }
+}
