@@ -6,6 +6,7 @@ import './style/style.css';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("babel-core/register");
 require("babel-polyfill");
+
 Chart.register(...registerables);
 
 const arrayObj: IObjArray = {
@@ -14,24 +15,22 @@ const arrayObj: IObjArray = {
 const salarySet = new Set<number>();
 
 document.addEventListener('DOMContentLoaded', getApiData);
-domElements.selectorIdSelectData.addEventListener('click', selectDataByFilters);
-
 
 export async function getApiData(): Promise<void> {
     try {
-        const { data: { results } } = await axios.get(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=ccc38448&app_key=6e970519eb8e74ec75c0376db45da6ae`);
+        const { data: { results } } = await axios.get(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${process.env.ADZUNA_API_ID}&app_key=${process.env.API_KEY_ADZUNA}`);
         getAllResults(results);
     } catch (err) {
         console.error('apiData', err);
     }
 }
 
-function putDataToLocalStorage(index: string, value: string | number): void {
+export function putDataToLocalStorage(index: string, value: string | number): void {
 
     localStorage.setItem(index.toString(), JSON.stringify(value));
 }
 
-function getAllResults(results: IResults): void {
+export function getAllResults(results: IResults): void {
 
     Object.values(results).map((element, index) => {
         putDataToLocalStorage(`title-${index}`, element.title);
@@ -42,16 +41,9 @@ function getAllResults(results: IResults): void {
     });
     renderItems(arrayObj.jobsTitleArray, Array.from(salarySet));
 }
-async function selectDataByFilters(e: Event) {
-    if ((<HTMLSelectElement>e.target).options.selectedIndex === 0) {
-        const title: Array<string | null> = [];
-        [0, 1, 2, 3, 4, 5, 6].forEach(e => {
-            return title.push(localStorage.getItem(`title-${e}`));
-        });
-    }
-}
 
-function renderItems(jobsTitleArray: Array<string | number>, salarySet: Array<number>) {
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export function renderItems(jobsTitleArray: Array<string | number>, salarySet: Array<number>) {
 
     return new Chart((<HTMLCanvasElement><unknown>domElements.ctx), {
         type: 'bar',
@@ -91,8 +83,5 @@ function renderItems(jobsTitleArray: Array<string | number>, salarySet: Array<nu
         }
     });
 }
-
-
-
 
 

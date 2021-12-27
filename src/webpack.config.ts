@@ -1,6 +1,7 @@
 import path from "path";
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
   entry: "./ts/index.ts",
@@ -35,6 +36,15 @@ module.exports = {
     extensions: [".ts", ".js"],
   },
   plugins: [
+    new Dotenv({
+      path: './.env',
+      safe: false,
+      systemvars: false,
+      silent: false,
+      expand: false,
+      defaults: false,
+      ignoreStub: true,
+    }),
     new HtmlWebpackPlugin({ template: "./index.html" }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
@@ -52,4 +62,8 @@ module.exports = {
     compress: true,
     port: 4000,
   },
+  stats: {
+    errorDetails: true
+  }
 };
+

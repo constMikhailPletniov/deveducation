@@ -8,7 +8,7 @@ html,body{
     overflow: hidden;
     background-image: url('./stripe-hero-background-effect-html-css.png');
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
 }
 .wrapper{
     display: flex;
