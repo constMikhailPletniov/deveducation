@@ -32,7 +32,7 @@ function changeChart(e: Event) {
 
 export async function getApiData(): Promise<void> {
     try {
-        const { data: { results } } = await axios.get(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${process.env.ADZUNA_API_ID}&app_key=${process.env.API_KEY_ADZUNA}`);
+        const { data: { results } } = await axios.get(`https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=${process.env.ADZUNA_API_ID || 'ccc38448'}&app_key=${process.env.API_KEY_ADZUNA || '6e970519eb8e74ec75c0376db45da6ae'}`);
         dataApi = results;
         getAllResults(dataApi, 'specialities');
     } catch (err) {
