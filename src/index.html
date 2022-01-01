@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PseudoTrello</title>
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="hOne">My Trello</h1>
+    </header>
+    <main class="mainWrapper">
+        <section class="containerTasks">
+            <div class="containerToDoList">
+                <div class="containerHeader">
+                    <h3 class="headerThree">To Do List</h3>
+                </div>
+                <div class="containerToDoInput">
+                    <input type="text" name="toDoInput" id="toDoInput" />
+                </div>
+                <div class="containerButtonToDo">
+                    <button id="addToDoBtn">Add</button>
+                </div>
+                <template id="templateContainerToDoOut">
+                    <div class="containerToDoOut" id="{{id}}" draggable="true"></div>
+                </template>
+            </div>
+            <div class="containerInProgress">
+                <div class="containerHeader">
+                    <h3 class="headerThree">In progress</h3>
+                </div>
+            </div>
+            <div class="containerDone">
+                <div class="containerHeader">
+                    <h3 class="headerThree">Done</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">Created by Mikhail</footer>
+</body>
+
+</html>

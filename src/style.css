@@ -1,0 +1,84 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width: 100vw;
+    height: 100vh;
+background-image: url('./img/blue_landScape.jpg');
+background-size: cover;
+box-sizing: border-box;
+overflow: hidden;
+}
+
+.mainWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 80vh;
+}
+.containerTasks{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.containerToDoList, .containerInProgress,.containerDone{
+    width: 33%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(255,255,255);
+    padding: 10px;
+}
+.headerThree{
+    text-align: center;
+    margin-bottom: 10px;
+    color:rgb(255,255,255);
+}
+.containerButtonToDo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerToDoOut,.InProgressOut,.DoneOut{
+    text-align: center;
+    color: rgb(255,255,255);
+    font-weight: 600;
+    border: 2px solid rgb(255,255,255);
+    box-shadow: 2px 2px;
+    background-color: rgb(30, 131, 122);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+#addToDoBtn{
+    padding: 5px;
+   background-color: rgb(0,0,0,0.5);
+    cursor: pointer;
+    color:rgb(255,255,255);
+    border: none;
+    border-radius: 10px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+#addToDoBtn:hover{
+    background-color: rgb(255,255,255);
+    color:rgb(0,0,0);
+}
+#addToDoBtn:active{
+    background-color: rgb(255,255,255,0);
+    color:rgb(255,255,255);
+}
+#toDoInput{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header, .footer{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255,255,255);
+}
