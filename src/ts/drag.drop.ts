@@ -1,8 +1,11 @@
+import { IElementDraggged } from './interface';
+import { selectorsCss } from './domElements';
+import { putTaskToLocalStorage } from './tasks';
+
 let draggged: EventTarget;
 
 export function startDrag(e: Event): void {
-    draggged = e.target;
-    console.log(draggged);
+    draggged = <EventTarget>e.target;
 }
 
 export function allowDrop(e: Event): void {
@@ -13,24 +16,29 @@ export function dropElement(e: Event): void {
     e.preventDefault();
 
     switch (true) {
-        case ((<HTMLDivElement>e.target).className === 'containerToDoList'):
-            console.log(e.target);
+        case ((<HTMLDivElement>e.target).className === selectorsCss.classContainerToDoList):
+            const idElem = (<HTMLElement>draggged).id.split('-').slice(-1).toString();
+            localStorage.removeItem((<HTMLElement>draggged).id);
+            (<HTMLElement>draggged).id = `${selectorsCss.classContainerToDoList}-${idElem}`;
+            putTaskToLocalStorage((<HTMLElement>draggged).id, (<IElementDraggged><unknown>draggged).textContent);
+            (<HTMLElement>e.target).append(<HTMLElement>draggged);
             break;
-        case ((<HTMLDivElement>e.target).className === 'containerInProgress'):
-            (<HTMLDivElement>draggged).parentElement?.removeChild(draggged);
-            e.target.append(draggged);
+        case ((<HTMLDivElement>e.target).className === selectorsCss.classContainerInProgress):
+            (<HTMLDivElement>draggged).parentElement?.removeChild(<HTMLElement>draggged);
+            const idElemProgress = (<HTMLElement>draggged).id.split('-').slice(-1).toString();
+            localStorage.removeItem((<HTMLElement>draggged).id);
+            (<HTMLElement>draggged).id = `${selectorsCss.classContainerInProgress}-${idElemProgress}`;
+            putTaskToLocalStorage((<HTMLElement>draggged).id, (<IElementDraggged><unknown>draggged).textContent);
+            (<HTMLElement>e.target).append(<HTMLElement>draggged);
+            break;
+        case ((<HTMLDivElement>e.target).className === selectorsCss.classContainerDone):
+            (<HTMLDivElement>draggged).parentElement?.removeChild(<HTMLElement>draggged);
+            const idElemDone = (<HTMLElement>draggged).id.split('-').slice(-1).toString();
+            localStorage.removeItem((<HTMLElement>draggged).id);
+            (<HTMLElement>draggged).id = `${selectorsCss.classContainerDone}-${idElemDone}`;
+            putTaskToLocalStorage((<HTMLElement>draggged).id, (<IElementDraggged><unknown>draggged).textContent);
+            (<HTMLElement>e.target).append(<HTMLElement>draggged);
             break;
     }
 
 }
-// export function drag(e: Event) {
-//     const item = e.target as HTMLElement
-//     (<DragEvent><unknown>item).dataTransfer?.setData('id', item.id);
-// }
-
-// export function drop(e: Event) {
-//     e.preventDefault();
-//     const itemId = (<DragEvent><unknown>e.target)?.dataTransfer.getData('id');
-//     console.log(itemId);
-//     (<HTMLElement>e.target).append(<HTMLElement>document.getElementById(itemId));
-// }

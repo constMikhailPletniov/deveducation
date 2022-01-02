@@ -32,11 +32,17 @@
                 <div class="containerHeader">
                     <h3 class="headerThree">In progress</h3>
                 </div>
+                <template id="templateContainerInProgress">
+                    <div class="containerInProgressOut" id="{{id}}" draggable="true"></div>
+                </template>
             </div>
             <div class="containerDone">
                 <div class="containerHeader">
                     <h3 class="headerThree">Done</h3>
                 </div>
+                <template id="templateContainerDone">
+                    <div class="containerDoneOut" id="{{id}}" draggable="true"></div>
+                </template>
             </div>
         </section>
     </main>

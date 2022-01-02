@@ -5,7 +5,11 @@ export const selectorsCss = {
     idAddToDoBtn: 'addToDoBtn',
     classContainerToDoOut: 'containerToDoOut',
     idTemplateContainerToDoOut: 'templateContainerToDoOut',
-    idToDoInput: 'toDoInput'
+    idToDoInput: 'toDoInput',
+    idTemplateContainerInProgress: 'templateContainerInProgress',
+    classContainerInProgressOut: 'containerInProgressOut',
+    idTemplateContainerDone: 'templateContainerDone',
+    classContainerDoneOut: 'containerDoneOut'
 };
 
 export const domElements = {
@@ -15,5 +19,9 @@ export const domElements = {
     buttonIdAdToDoBtn: <HTMLButtonElement>document.querySelector(`#${selectorsCss.idAddToDoBtn}`),
     divClassContainerToDoOut: <HTMLDivElement>document.querySelector(`.${selectorsCss.classContainerToDoOut}`),
     templateIdTemplateContainerToDoOut: (<HTMLTemplateElement>document.querySelector(`#${selectorsCss.idTemplateContainerToDoOut}`)).content,
-    inputIdToDoInput: <HTMLInputElement>document.querySelector(`#${selectorsCss.idToDoInput}`)
+    inputIdToDoInput: <HTMLInputElement>document.querySelector(`#${selectorsCss.idToDoInput}`),
+    templateIdTemplateContainerInProgress: (<HTMLTemplateElement>document.querySelector(`#${selectorsCss.idTemplateContainerInProgress}`)).content,
+    divClassContainerInProgressOut: <HTMLDivElement>document.querySelector(`.${selectorsCss.classContainerInProgressOut}`),
+    templateIdTemplateContainerDone: (<HTMLTemplateElement>document.querySelector(`#${selectorsCss.idTemplateContainerDone}`)).content,
+    divClassContainerDoneOut: <HTMLDivElement>document.querySelector(`.${selectorsCss.classContainerDoneOut}`)
 };
